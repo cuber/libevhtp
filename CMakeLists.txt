@@ -315,23 +315,23 @@ if(NOT INCLUDE_INSTALL_DIR)
 endif()
 
 install (TARGETS evhtp DESTINATION ${LIB_INSTALL_DIR})
-install (FILES evhtp.h DESTINATION ${INCLUDE_INSTALL_DIR}/evhtp)
-install (FILES htparse.h DESTINATION ${INCLUDE_INSTALL_DIR}/evhtp)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/evhtp-config.h DESTINATION ${INCLUDE_INSTALL_DIR}/evhtp)
+install (FILES evhtp.h DESTINATION ${INCLUDE_INSTALL_DIR})
+install (FILES htparse.h DESTINATION ${INCLUDE_INSTALL_DIR})
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/evhtp-config.h DESTINATION ${INCLUDE_INSTALL_DIR})
 
 if (NOT EVHTP_DISABLE_EVTHR)
-	install (FILES evthr.h DESTINATION ${INCLUDE_INSTALL_DIR}/evhtp)
+	install (FILES evthr.h DESTINATION ${INCLUDE_INSTALL_DIR})
 endif()
 
 if (NOT EVHTP_DISABLE_REGEX)
 		if (NOT HAS_SYS_ONIG)
-				install (FILES oniguruma/onigposix.h DESTINATION ${INCLUDE_INSTALL_DIR}/evhtp)
+				install (FILES oniguruma/onigposix.h DESTINATION ${INCLUDE_INSTALL_DIR})
 		endif()
 endif()
 
 if (NOT HAVE_SYS_QUEUE)
 		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/compat/sys/queue.h
-				DESTINATION ${INCLUDE_INSTALL_DIR}/evhtp/sys)
+				DESTINATION ${INCLUDE_INSTALL_DIR}/sys)
 endif()
 
 IF (WIN32)
