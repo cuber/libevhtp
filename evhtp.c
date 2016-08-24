@@ -1606,7 +1606,7 @@ _evhtp_request_parser_fini(htparser * p) {
 
         memcpy(uri->query_raw, body, body_len);
 
-        uri->query     = evhtp_parse_query(body, body_len);
+        uri->query = evhtp_parse_query_wflags(body, body_len, c->htp->parser_flags);
     }
 
 
@@ -1878,10 +1878,8 @@ _evhtp_connection_writecb(evbev_t * bev, void * arg) {
         bufferevent_enable(bev, EV_READ);
 
         if (evbuffer_get_length(bufferevent_get_input(bev))) {
-            _evhtp_connection_readcb(bev, arg);
+            return _evhtp_connection_readcb(bev, arg);
         }
-
-        return;
     }
 
     if (c->request->finished == 0 || evbuffer_get_length(bufferevent_get_output(bev))) {
