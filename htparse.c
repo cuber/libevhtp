@@ -1097,9 +1097,9 @@ htparser_run(htparser * p, htparse_hooks * hooks, const char * data, size_t len)
                     } else {
                         break;
                     }
-
+                    if (i + 1 >= len) return len;
                     ch = data[++i];
-                } while (i < len);
+                } while (1);
 
                 switch (ch) {
                     case ' ':
@@ -1176,9 +1176,9 @@ htparser_run(htparser * p, htparse_hooks * hooks, const char * data, size_t len)
                     } else {
                         break;
                     }
-
+                    if (i + 1 >= len) return len;
                     ch = data[++i];
-                } while (i < len);
+                } while (1);
 
                 switch (ch) {
                     case ' ':
